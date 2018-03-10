@@ -12,10 +12,15 @@ int Fahrzeug::p_iMaxID = 0;
 
 void vAufgabe1(){
     Fahrzeug BMW;
-    BMW.p_sName="BMW";
+    BMW.vSetsName("BMW");
     Fahrzeug Audi("Audi");
-    Fahrzeug *VW = new Fahrzeug(VW);
-    cout << BMW.p_sName << endl;
-    cout << Audi.p_sName << endl;
-    cout << VW.p_sName << endl;
+    Fahrzeug *VW = new Fahrzeug("VW");
+    Fahrzeug *Porsche = new Fahrzeug;
+    Porsche->vSetsName("Porsche");
+    cout << BMW.sGetsName() << endl;
+    cout << Audi.sGetsName() << endl;
+    cout << VW->sGetsName() << endl;
+    cout << Porsche->sGetsName() << endl;
+    delete VW;
+    delete Porsche;
 };
