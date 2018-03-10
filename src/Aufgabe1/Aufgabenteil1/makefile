@@ -12,3 +12,8 @@ $(EXECUTABLE): $(OBJECTS)
 
 .cpp.o:
 	$(CC) $(CFLAGS) $< -o $@
+
+.PHONY: clean
+
+clean:
+	rm -f $(binaries) *.o
