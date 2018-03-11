@@ -1,7 +1,7 @@
 #include <string>
-#include "Fahrzeug.h"
 #include <iostream>
 #include <iomanip>
+#include "Fahrzeug.h"
 using namespace std;
 extern double dGlobaleZeit;
 
@@ -39,10 +39,10 @@ void Fahrzeug::vInitialisierung(){
 };
 
 void Fahrzeug::vSetsName(string sName){
-    p_sName=sName;
+    p_sName = sName;
 };
 
-string Fahrzeug::sGetsName(){
+string Fahrzeug::sGetsName() const{
     return p_sName;
 }
 
@@ -50,7 +50,7 @@ void Fahrzeug::vSetdMaxGeschwindigkeit(int dMaxGeschwindigkeit){
     p_dMaxGeschwindigkeit = dMaxGeschwindigkeit;
 }
 
-void Fahrzeug::vAusgabe(){
+void Fahrzeug::vAusgabe() const{
     cout << setw(12) << p_iID <<setw(12) << p_sName << setw(12) << ":" << setw(12) << 
     p_dMaxGeschwindigkeit << setw(12) << p_dGesamtStrecke << endl;
 }
