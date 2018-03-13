@@ -11,8 +11,8 @@ void vAufgabe_1(void);
 void vAufgabe_1_deb(void);
 
 int main(int argc, char *argv[]) {
-//  vAufgabe_1();
-//  vAufgabe_1_deb();
+  vAufgabe_1();
+  vAufgabe_1_deb();
     return 0;
 }
 

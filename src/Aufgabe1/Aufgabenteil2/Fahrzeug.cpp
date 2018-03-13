@@ -12,21 +12,16 @@ Fahrzeug::Fahrzeug(){
     p_dMaxGeschwindigkeit = 0;
 };
 
-// Konstruktor mit Initialisierungsliste, dynamische Variablen dürfen hier nicht rein!
 Fahrzeug::Fahrzeug(string sName) : p_sName(sName) {
     vInitialisierung();
     p_dMaxGeschwindigkeit = 0;
 };
 
-Fahrzeug::Fahrzeug(string sName, double dMaxGeschwindigkeit) : p_sName(sName), 
-                                                               p_dMaxGeschwindigkeit (dMaxGeschwindigkeit) {
+Fahrzeug::Fahrzeug(string sName, double dMaxGeschwindigkeit) : 
+                   p_sName(sName), p_dMaxGeschwindigkeit (dMaxGeschwindigkeit) {
     vInitialisierung();
 };
 
-/* Es gibt noch die Möglichkeit einen Individuellen Copykonstruktor zu erstellen. Das kann Sinn machen, denn
-der Copyconstruktor ist implizit vorhanden, was zb bei dynamischen Elementen problematisch ist. */
-
-// Destruktor, hier müssen innerhalb der Klasse definierte dynamische Variablen wieder freigegeben werden.
 Fahrzeug::~Fahrzeug(){
 };
 
@@ -44,16 +39,16 @@ void Fahrzeug::vSetsName(string sName){
 
 string Fahrzeug::sGetsName() const{
     return p_sName;
-}
+};
 
 void Fahrzeug::vSetdMaxGeschwindigkeit(int dMaxGeschwindigkeit){
     p_dMaxGeschwindigkeit = dMaxGeschwindigkeit;
-}
+};
 
 void Fahrzeug::vAusgabe() const{
     cout << setw(12) << p_iID <<setw(12) << p_sName << setw(12) << ":" << setw(12) << 
-    p_dMaxGeschwindigkeit << setw(12) << p_dGesamtStrecke << endl;
-}
+    p_dMaxGeschwindigkeit << setw(12) << p_dGesamtStrecke << setw(12) <<endl;
+};
    
 void Fahrzeug::vAbfertigung(){
     if(p_dZeit < dGlobaleZeit){ 
@@ -61,4 +56,8 @@ void Fahrzeug::vAbfertigung(){
         p_dGesamtZeit += (dGlobaleZeit - p_dZeit);
         p_dZeit = dGlobaleZeit;
     }
-}
+};
+
+double Fahrzeug::dTanken(){return 0.0;};
+
+double Fahrzeug::dTanken(double dAuftanken){return 0.0;};

@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS=-c -Wall -g
 LDFLAGS=
-SOURCES=main.cpp Fahrzeug.cpp
+SOURCES=main.cpp Fahrzeug.cpp PKW.cpp Fahrrad.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=Verkehrsnetz
 

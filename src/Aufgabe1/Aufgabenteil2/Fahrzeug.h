@@ -1,6 +1,8 @@
+#ifndef FAHRZEUG_H_
+#define FAHRZEUG_H_
 using namespace std;
-#ifndef STRING
-#define STRING
+#include <string>
+
 
 class Fahrzeug{
     public:
@@ -11,12 +13,11 @@ class Fahrzeug{
     double p_dGesamtZeit;
     // p_dZeit: Die Zeit zu dem das Fahrzeug zu letzten mal abgefertigt wurde
     double p_dZeit;
-
-    private:
     string p_sName;
     double p_dMaxGeschwindigkeit;
     int p_iID;
     
+    private:
     static int p_iMaxID;
 
 
@@ -30,6 +31,8 @@ class Fahrzeug{
     void vSetdMaxGeschwindigkeit(int);
     virtual void vAusgabe() const;
     virtual void vAbfertigung();
+    virtual double dTanken();
+    virtual double dTanken(double);
 
     protected:
 
@@ -38,3 +41,4 @@ class Fahrzeug{
 };
 
 #endif
+
