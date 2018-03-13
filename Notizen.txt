@@ -1,0 +1,20 @@
+- Nachdem eine Funktion oder Variable als const gekennzeichnet wurde müssen die objects komplett
+neu gebaut werden, sonst kann gcc das ganze nicht binden
+
+- private nur von der Klasse zu sehen, proteced von Unterklassen zugängig und public von jedem. 
+Man möchte die höchste Sicherheit um später beim debuggen das Problem einschränken zu können. 
+Daher alles auf private setzen und den Zugriff über public Funktionen erlauben. Außnahme machen 
+Variablen die in abgeleiteten Klassen verwendet werden sollen, diese müssen auch dort sichtbar 
+sein und daher als protected initialisiert werden. 
+
+- In eine Header am Anfang #ifndef HEADERNAME_H   #define HEADERNAME_H und ans ende #endif. So 
+kann man die Header aus versehen zweimal irgendwo einbinden ohne das es problematisch wird.
+
+
+- Um eine rein Virtuelle Funktion zu implementieren setzt man "= 0" hinter die Definition, dann
+wird allerdings automatisch die ganze Klasse virtuel
+
+
+- Eine Static Variable wird jeweils nur einmal für alle Objekte der Klasse angelegt, eine static
+  Variable oder function außerhalb von Klasse bedeutet das gegenteil von extern und sorgt dafür,
+  das die Variable oder function nur aus dem aktuellen scope sichtbar ist. 
