@@ -1,8 +1,6 @@
 #ifndef PKW_H_
 #define PKW_H_
-#include "Fahrzeug.h"
 #include <string>
-using namespace std;
 
 class PKW: public Fahrzeug{
     public:
@@ -13,24 +11,19 @@ class PKW: public Fahrzeug{
     double p_dTankvolumen;
     double p_dGesamtVerbrauch;
 
-    protected:
-   
-
-
     public:
-    PKW(string,double,double,double,double);
-    PKW(string,double,double,double);
-    PKW(string,double,double);
+    PKW(std::string,double,double,double,double);
+    PKW(std::string,double,double,double);
+    PKW(std::string,double,double);
     virtual ~PKW();
     virtual double dTanken();
     virtual double dTanken(double);
-    virtual void vAusgabe() const;
+    virtual std::ostream& vAusgabe(std::ostream&) const;
     virtual void vAbfertigung(); 
 
     private:
     double dVerbrauch();
 };
-
 
 #endif
 

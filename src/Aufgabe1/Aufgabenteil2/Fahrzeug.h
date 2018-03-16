@@ -1,8 +1,7 @@
 #ifndef FAHRZEUG_H_
 #define FAHRZEUG_H_
-using namespace std;
 #include <string>
-
+#include <iostream>
 
 class Fahrzeug{
     public:
@@ -13,7 +12,7 @@ class Fahrzeug{
     double p_dGesamtZeit;
     // p_dZeit: Die Zeit zu dem das Fahrzeug zu letzten mal abgefertigt wurde
     double p_dZeit;
-    string p_sName;
+    std::string p_sName;
     double p_dMaxGeschwindigkeit;
     int p_iID;
     
@@ -23,13 +22,13 @@ class Fahrzeug{
 
     public:
     Fahrzeug();
-    Fahrzeug(string);
-    Fahrzeug(string, double);
+    Fahrzeug(std::string);
+    Fahrzeug(std::string, double);
     virtual ~Fahrzeug();
-    void vSetsName(string);
-    string sGetsName() const;
+    void vSetsName(std::string);
+    std::string sGetsName() const;
     void vSetdMaxGeschwindigkeit(int);
-    virtual void vAusgabe() const;
+    virtual std::ostream& vAusgabe(std::ostream&) const;
     virtual void vAbfertigung();
     virtual double dTanken();
     virtual double dTanken(double);

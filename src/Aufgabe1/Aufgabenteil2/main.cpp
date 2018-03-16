@@ -1,22 +1,44 @@
  #include <iostream>
 #include <iomanip>
 #include "Fahrzeug.h"
-
+#include "PKW.h"
+#include "Fahrrad.h"
 using namespace std;
+
 
 int Fahrzeug::p_iMaxID = 0;
 double dGlobaleZeit=0.0;
 
+
 void vAufgabe_1(void);
 void vAufgabe_1_deb(void);
+ostream& operator << (ostream &output,const PKW &cPKW){ 
+    return cPKW.vAusgabe(output);
+};
+
 
 int main(int argc, char *argv[]) {
 //  vAufgabe_1();
 //  vAufgabe_1_deb();
+//  PKW *BMW = new PKW("BMW",200.0,12.0);
+    PKW Audi("Audi",200.0,12.0,50);
+
+while(dGlobaleZeit <= 1.0){
+    cout.setf(ios::left);
+    Audi.vAbfertigung();
+    cout << setw(12) << "ID" <<setw(12) << "Name" << setw(12) << ":" << setw(12) << "MaxKmh" 
+    << setw(16) << "Gesamtstrecke" << setw(16) << "Tankinhalt" << setw(16) << "Gesamtverbrauch"<< endl;
+    cout.fill('+');
+    cout << setw(97) << "" << endl;
+    cout<<endl; 
+    cout.fill(' ');
+    cout << Audi << endl;
+    dGlobaleZeit += 1.f/10.f;
+}
     return 0;
 }
 
-
+/*
 void vAufgabe_1(){
     Fahrzeug BMW;
     BMW.vSetsName("BMW");
@@ -32,11 +54,11 @@ void vAufgabe_1(){
     cout << "\n\n\n" << endl;
     // setw: Breite die für das nächste Ausgabeobjekt mindestens bereitgestellt wird
     // width(): Äquivalent zu setw aber andere Syntax
-    /* resetiosflags(ios::left/richt) verwenden wenn man wechseln möchte, sonst wird beides 
-    gleichzeitig definiert und das Verhalten ist undefiniert */
+    resetiosflags(ios::left/richt) verwenden wenn man wechseln möchte, sonst wird beides 
+    gleichzeitig definiert und das Verhalten ist undefiniert 
     cout.setf(ios::left);
     cout << setw(12) << "ID" <<setw(12) << "Name" << setw(12) << ":" << setw(12) << "MaxKmh" 
-    << setw(12) << "Gesamtstrecke" << endl;
+    << setw(12) << "Gesamtstrecke" << setw(12) << "Tankinhalt" << setw(12) << "Gesamtverbrauch"<< endl;
     cout.fill('+');
     cout << setw(61) << "" << endl;
     cout<<endl; 
@@ -55,7 +77,8 @@ void vAufgabe_1(){
         dGlobaleZeit += 1.f/10.f;
 
         cout << setw(12) << "ID" <<setw(12) << "Name" << setw(12) << ":" << setw(12) 
-        << "MaxKmh" << setw(12) << "Gesamtstrecke" << endl;
+        << "MaxKmh" << setw(12) << "Gesamtstrecke" << setw(12) << "Tankinhalt"
+        << setw(12) << "Gesamtverbrauch" << endl;
         cout.fill('+');
         cout << setw(61) << "" << endl;
         cout.fill(' ');
@@ -82,3 +105,4 @@ void vAufgabe_1_deb(){
         fahrzeugFeld[i]->vAusgabe();
     }
 }
+*/

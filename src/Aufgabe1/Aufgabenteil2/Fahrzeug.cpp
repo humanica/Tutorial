@@ -45,9 +45,10 @@ void Fahrzeug::vSetdMaxGeschwindigkeit(int dMaxGeschwindigkeit){
     p_dMaxGeschwindigkeit = dMaxGeschwindigkeit;
 };
 
-void Fahrzeug::vAusgabe() const{
-    cout << setw(12) << p_iID <<setw(12) << p_sName << setw(12) << ":" << setw(12) << 
-    p_dMaxGeschwindigkeit << setw(12) << p_dGesamtStrecke << setw(12) <<endl;
+ostream& Fahrzeug::vAusgabe(ostream &output) const{
+    output << setw(12) << p_iID <<setw(12) << p_sName << setw(12) << ":" << setw(12) << 
+    p_dMaxGeschwindigkeit << setw(16) << p_dGesamtStrecke << setw(16);
+    return output;
 };
    
 void Fahrzeug::vAbfertigung(){
@@ -61,3 +62,10 @@ void Fahrzeug::vAbfertigung(){
 double Fahrzeug::dTanken(){return 0.0;};
 
 double Fahrzeug::dTanken(double dAuftanken){return 0.0;};
+
+
+
+
+
+
+
