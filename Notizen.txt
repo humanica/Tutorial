@@ -1,3 +1,13 @@
+- Rechtemodell: Von Außen (zb aus der main) darf nur auf public zugegriffen werden, egal
+ob ein Object instanziiert ist oder nicht. Wird nun eine Public Funktion aufgerufen kann 
+innerhalb dieser Funktion auf alles zugegriffen werden. Zudem kann auf die protected 
+Elemente der höheren Klasse zugegriffen werden. 
+Aber warum braucht es im Skript Beispiel dann eine fried deklaration um auf Elemente der 
+Klasse zuzugreifen. 
+
+
+
+
 - Nachdem eine Funktion oder Variable als const gekennzeichnet wurde müssen die objects komplett
 neu gebaut werden, sonst kann gcc das ganze nicht binden
 
@@ -18,3 +28,10 @@ wird allerdings automatisch die ganze Klasse virtuel
 - Eine Static Variable wird jeweils nur einmal für alle Objekte der Klasse angelegt, eine static
   Variable oder function außerhalb von Klasse bedeutet das gegenteil von extern und sorgt dafür,
   das die Variable oder function nur aus dem aktuellen scope sichtbar ist. 
+
+- Innerhalb von Header sollte kein namespace std deklariert werden, da das ganze sonst in die cpp
+wandert. Daher in der Header einfach std:: davor schreiben. 
+
+- Die header inkludierung muss in der gleichen Reihenfolge passieren wie die initialisierung die 
+abfolge der Klassenhirarchie selbst, sonst werden die Elemente der Äußeren Klasse in der inneren
+nicht gefunden. 
