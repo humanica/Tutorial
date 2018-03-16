@@ -31,10 +31,10 @@ void PKW::vAbfertigung(){
     if(p_dZeit < dGlobaleZeit){ 
         p_dGesamtStrecke += (dGlobaleZeit - p_dZeit) * p_dMaxGeschwindigkeit;
         p_dGesamtZeit += (dGlobaleZeit - p_dZeit);
-        p_dZeit = dGlobaleZeit;
         p_dGesamtVerbrauch += (((dGlobaleZeit - p_dZeit) * p_dMaxGeschwindigkeit) / 100.0) * p_dVerbrauch;
         p_dTankinhalt = p_dTankinhalt - (((dGlobaleZeit - p_dZeit) * p_dMaxGeschwindigkeit) / 100.0) * p_dVerbrauch;
         if(p_dTankinhalt<0.0)p_dTankinhalt = 0.0;
+        p_dZeit = dGlobaleZeit;
     } 
 };
 
@@ -49,5 +49,7 @@ double PKW::dTanken(double dAuftanken){
     return p_dTankinhalt;
 };
 
-
+double PKW::dGeschwindigkeit{
+    return p_dMaxGeschwindigkeit;
+}
 

@@ -16,3 +16,16 @@ double Fahrrad::dTanken(){
 double Fahrrad::dTanken(double dAuftanken){
     return 0.0;
 };
+
+double Fahrrad::dGeschwindigkeit(){
+
+}
+
+void PKW::vAbfertigung(){
+    if(p_dZeit < dGlobaleZeit){ 
+        p_dGesamtStrecke += (dGlobaleZeit - p_dZeit) * p_dMaxGeschwindigkeit;
+        p_dGesamtZeit += (dGlobaleZeit - p_dZeit);
+        
+        if(p_dTankinhalt<0.0)p_dTankinhalt = 0.0;
+        p_dZeit = dGlobaleZeit;
+} 

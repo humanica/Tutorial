@@ -9,7 +9,7 @@ class Fahrrad: public Fahrzeug{
     virtual ~Fahrrad();
     virtual double dTanken();
     virtual double dTanken(double);
-
+    virtual double dGeschwindigkeit() override;
 };
 
 #endif

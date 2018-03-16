@@ -59,6 +59,8 @@ void Fahrzeug::vAbfertigung(){
     }
 };
 
+double Fahrzeug::vGeschwindigkeit(){};
+
 double Fahrzeug::dTanken(){return 0.0;};
 
 double Fahrzeug::dTanken(double dAuftanken){return 0.0;};

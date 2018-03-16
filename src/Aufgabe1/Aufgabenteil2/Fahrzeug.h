@@ -32,7 +32,7 @@ class Fahrzeug{
     virtual void vAbfertigung();
     virtual double dTanken();
     virtual double dTanken(double);
-
+    virtual double dGeschwindigkeit();
     protected:
 
     private:
