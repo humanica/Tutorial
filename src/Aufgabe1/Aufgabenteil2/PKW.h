@@ -16,10 +16,16 @@ class PKW: public Fahrzeug{
     PKW(std::string,double,double,double);
     PKW(std::string,double,double);
     virtual ~PKW();
+    double dGetVerbrauch();
+    double dGetTankinhalt();
+    double dGetTankvolumen();
+    double dGetGesamtVerbrauch();
+    virtual void vAusgabe() const;
+    virtual std::ostream& ostreamAusgabe(std::ostream&) const;
+    virtual void vAbfertigung(); 
     virtual double dTanken();
     virtual double dTanken(double);
-    virtual std::ostream& vAusgabe(std::ostream&) const;
-    virtual void vAbfertigung(); 
+    virtual double dGeschwindigkeit();
 
     private:
     double dVerbrauch();

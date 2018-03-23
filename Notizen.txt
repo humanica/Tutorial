@@ -35,3 +35,21 @@ wandert. Daher in der Header einfach std:: davor schreiben.
 - Die header inkludierung muss in der gleichen Reihenfolge passieren wie die initialisierung die 
 abfolge der Klassenhirarchie selbst, sonst werden die Elemente der Äußeren Klasse in der inneren
 nicht gefunden. 
+
+
+- Ein Pointer enthält die Adresse, also eine Zahl die für einen Speicherbereich steht. Diese Adresse
+wird einfach hochgezählt, sprich ein Array mit 10 Elementen enthäl 10 nebeneinander liegende Adressen, 
+egal wieviel byte der gespeicherte Datentyp enthält. 
+Stimmt das? Wie kann ich dann auf zb einem Array von Structs zugreifen? Kann das nur als Pointer gespeichert werden?
+
+
+
+
+
+
+
+
+
+array[5]=...
+array == *array[0]
+array[i] == *(array + i)          // Warum? array enthält doch schon die Adresse, warum eine Referenz mehr? 

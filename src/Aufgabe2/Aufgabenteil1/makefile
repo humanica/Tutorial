@@ -1,9 +1,9 @@
 CC=g++
-CFLAGS=-c -Wall
+CFLAGS=-c -Wall -g
 LDFLAGS=
-SOURCES=main.cpp Activity.cpp
+SOURCES=main.cpp Fahrzeug.cpp PKW.cpp Fahrrad.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
-EXECUTABLE=Paerchenfinder
+EXECUTABLE=Verkehrsnetz
 
 all: $(SOURCES) $(EXECUTABLE)
 
@@ -12,3 +12,8 @@ $(EXECUTABLE): $(OBJECTS)
 
 .cpp.o:
 	$(CC) $(CFLAGS) $< -o $@
+
+.PHONY: clean
+
+clean:
+	rm -f $(binaries) *.o

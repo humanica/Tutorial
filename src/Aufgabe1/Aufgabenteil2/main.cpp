@@ -1,5 +1,7 @@
- #include <iostream>
+#include <iostream>
 #include <iomanip>
+#include <math.h>
+#include <vector>
 #include "Fahrzeug.h"
 #include "PKW.h"
 #include "Fahrrad.h"
@@ -12,34 +14,21 @@ double dGlobaleZeit=0.0;
 
 void vAufgabe_1(void);
 void vAufgabe_1_deb(void);
+void vAufgabe_2(void);
 ostream& operator << (ostream &output,const PKW &cPKW){ 
-    return cPKW.vAusgabe(output);
+    return cPKW.ostreamAusgabe(output);
 };
 
 
-int main(int argc, char *argv[]) {
-//  vAufgabe_1();
-//  vAufgabe_1_deb();
-//  PKW *BMW = new PKW("BMW",200.0,12.0);
-    PKW Audi("Audi",200.0,12.0,50);
 
-while(dGlobaleZeit <= 1.0){
-    cout.setf(ios::left);
-    Audi.vAbfertigung();
+
+int main(int argc, char *argv[]) {
     cout << setw(12) << "ID" <<setw(12) << "Name" << setw(12) << ":" << setw(12) << "MaxKmh" 
     << setw(16) << "Gesamtstrecke" << setw(16) << "Tankinhalt" << setw(16) << "Gesamtverbrauch"<< endl;
-    cout.fill('+');
-    cout << setw(97) << "" << endl;
-    cout<<endl; 
-    cout.fill(' ');
-    cout << Audi << endl;
-    dGlobaleZeit += 1.f/10.f;
-}
-    return 0;
+    vAufgabe_2();
 }
 
-/*
-void vAufgabe_1(){
+/*void vAufgabe_1(){
     Fahrzeug BMW;
     BMW.vSetsName("BMW");
     Fahrzeug Audi("Audi",100);
@@ -75,34 +64,10 @@ void vAufgabe_1(){
         VW->vAbfertigung();
         Porsche->vAbfertigung();
         dGlobaleZeit += 1.f/10.f;
-
-        cout << setw(12) << "ID" <<setw(12) << "Name" << setw(12) << ":" << setw(12) 
-        << "MaxKmh" << setw(12) << "Gesamtstrecke" << setw(12) << "Tankinhalt"
-        << setw(12) << "Gesamtverbrauch" << endl;
-        cout.fill('+');
-        cout << setw(61) << "" << endl;
-        cout.fill(' ');
-
-        BMW.vAusgabe();
-        Audi.vAusgabe();
-        VW->vAusgabe();
-        Porsche->vAusgabe();
-        cout << "\n\n\n";
     }
+}*/
 
-    delete VW;
-    delete Porsche;
-};
-
-
-void vAufgabe_1_deb(){
-    Fahrzeug *VW = new Fahrzeug("VW");
-    Fahrzeug *Porsche = new Fahrzeug("Porsche");
-    Fahrzeug *BMW = new Fahrzeug("BMW");
-    Fahrzeug *Audi = new Fahrzeug("Audi");
-    Fahrzeug * fahrzeugFeld[5] = {VW, Porsche, 0, BMW, Audi};
-    for (int i=0;i<5;i++){
-        fahrzeugFeld[i]->vAusgabe();
-    }
+void vAufgabe_2(){
+  
 }
-*/
+

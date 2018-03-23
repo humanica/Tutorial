@@ -2,10 +2,10 @@
 #define FAHRZEUG_H_
 #include <string>
 #include <iostream>
+extern double dGlobaleZeit;
+
 
 class Fahrzeug{
-    public:
-
     protected: 
     double p_dGesamtStrecke;
     // p_dGesamtZeit: Die Zeit die das Fahrzeug schon gefahren ist
@@ -19,21 +19,23 @@ class Fahrzeug{
     private:
     static int p_iMaxID;
 
-
     public:
     Fahrzeug();
     Fahrzeug(std::string);
     Fahrzeug(std::string, double);
     virtual ~Fahrzeug();
     void vSetsName(std::string);
+    double dGetGesamtStrecke() const;
+    double dGetGesamtZeit() const;
+    double dGetZeit() const;
     std::string sGetsName() const;
-    void vSetdMaxGeschwindigkeit(int);
-    virtual std::ostream& vAusgabe(std::ostream&) const;
+    double dGetMaxGeschwindigkeit() const;
+    virtual std::ostream& ostreamAusgabe(std::ostream&) const;
+    virtual void vAusgabe() const;
     virtual void vAbfertigung();
     virtual double dTanken();
     virtual double dTanken(double);
     virtual double dGeschwindigkeit();
-    protected:
 
     private:
     void vInitialisierung();

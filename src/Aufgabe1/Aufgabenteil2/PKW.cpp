@@ -21,18 +21,40 @@ PKW::PKW(string sName, double dMaxGeschwindigkeit, double dVerbrauch)
 
 PKW::~PKW(){};
 
-ostream& PKW::vAusgabe(ostream &output) const{
-    Fahrzeug::vAusgabe(output) << p_dTankinhalt
+double PKW::dGetVerbrauch(){
+    return p_dVerbrauch;
+}
+
+double PKW::dGetTankinhalt(){
+    return p_dTankinhalt;
+}
+
+double PKW::dGetTankvolumen(){
+    return p_dTankvolumen;
+}
+
+double PKW::dGetGesamtVerbrauch(){
+    return p_dGesamtVerbrauch;
+}
+
+void PKW::vAusgabe() const{
+    cout << p_dTankinhalt << setw(16) << p_dGesamtVerbrauch 
+    << setw(16)<<endl;
+}
+
+ostream& PKW::ostreamAusgabe(ostream &output) const{
+    Fahrzeug::ostreamAusgabe(output) << p_dTankinhalt
     << setw(16) << p_dGesamtVerbrauch <<endl;
     return output;
 };
-   
-void PKW::vAbfertigung(){
+
+
+void PKW::vAbfertigung() {
     if(p_dZeit < dGlobaleZeit){ 
-        p_dGesamtStrecke += (dGlobaleZeit - p_dZeit) * p_dMaxGeschwindigkeit;
+        p_dGesamtStrecke += (dGlobaleZeit - p_dZeit) * PKW::dGeschwindigkeit();
         p_dGesamtZeit += (dGlobaleZeit - p_dZeit);
-        p_dGesamtVerbrauch += (((dGlobaleZeit - p_dZeit) * p_dMaxGeschwindigkeit) / 100.0) * p_dVerbrauch;
-        p_dTankinhalt = p_dTankinhalt - (((dGlobaleZeit - p_dZeit) * p_dMaxGeschwindigkeit) / 100.0) * p_dVerbrauch;
+        p_dGesamtVerbrauch += (((dGlobaleZeit - p_dZeit) * PKW::dGeschwindigkeit()) / 100.0) * p_dVerbrauch;
+        p_dTankinhalt = p_dTankinhalt - (((dGlobaleZeit - p_dZeit) * PKW::dGeschwindigkeit()) / 100.0) * p_dVerbrauch;
         if(p_dTankinhalt<0.0)p_dTankinhalt = 0.0;
         p_dZeit = dGlobaleZeit;
     } 
@@ -43,13 +65,13 @@ double PKW::dTanken(){
     return p_dTankinhalt;
 };
 
-double PKW::dTanken(double dAuftanken){
+double PKW::dTanken(double dAuftanken) {
     p_dTankinhalt=p_dTankvolumen + dAuftanken;
     if(p_dTankinhalt > p_dTankvolumen) p_dTankinhalt = p_dTankvolumen;
     return p_dTankinhalt;
 };
 
-double PKW::dGeschwindigkeit{
+double PKW::dGeschwindigkeit() {
     return p_dMaxGeschwindigkeit;
-}
+};
 
