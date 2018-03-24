@@ -25,11 +25,12 @@ class Fahrzeug{
     Fahrzeug(std::string, double);
     virtual ~Fahrzeug();
     void vSetsName(std::string);
-    double dGetGesamtStrecke() const;
-    double dGetGesamtZeit() const;
-    double dGetZeit() const;
+    double dGetvGesamtStrecke() const;
+    double dGetvGesamtZeit() const;
+    double dGetvZeit() const;
+    void vSetdMaxGeschwindigkeit(double);
     std::string sGetsName() const;
-    double dGetMaxGeschwindigkeit() const;
+    double dGetvMaxGeschwindigkeit() const;
     virtual std::ostream& ostreamAusgabe(std::ostream&) const;
     virtual void vAusgabe() const;
     virtual void vAbfertigung();

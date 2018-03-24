@@ -27,35 +27,38 @@ void Fahrzeug::vSetsName(string sName){
     p_sName = sName;
 };
 
-double Fahrzeug::dGetGesamtStrecke() const{
+double Fahrzeug::dGetvGesamtStrecke() const{
     return p_dGesamtStrecke;
 };
 
-double Fahrzeug::dGetGesamtZeit() const{
+double Fahrzeug::dGetvGesamtZeit() const{
     return p_dGesamtStrecke;
 };
 
-double Fahrzeug::dGetZeit() const{
+double Fahrzeug::dGetvZeit() const{
     return p_dZeit;
 };
 
+void Fahrzeug::vSetdMaxGeschwindigkeit(double dGeschwindigkeit){
+    p_dMaxGeschwindigkeit =  dGeschwindigkeit;
+}
 string Fahrzeug::sGetsName() const{
     return p_sName;
 };
 
-double Fahrzeug::dGetMaxGeschwindigkeit() const{
+double Fahrzeug::dGetvMaxGeschwindigkeit() const{
     return p_dMaxGeschwindigkeit;
 }
 
 ostream& Fahrzeug::ostreamAusgabe(ostream &output) const{
-    output << setw(12) << p_iID <<setw(12) << p_sName << setw(12) << ":" << setw(12) << 
-    p_dMaxGeschwindigkeit << setw(16) << p_dGesamtStrecke << setw(16);
+    output << setw(12) << p_iID <<setw(12) << p_sName << setw(12) << ":" << setw(18) << 
+    p_dMaxGeschwindigkeit << setw(18) << p_dGesamtStrecke << setw(16);
     return output;
 };
  
 void Fahrzeug::vAusgabe() const{
-    cout << setw(12) << p_iID <<setw(12) << p_sName << setw(12) << ":" << setw(12) << 
-    p_dMaxGeschwindigkeit << setw(16) << p_dGesamtStrecke << setw(16);
+    cout << setw(12) << p_iID <<setw(12) << p_sName << setw(12) << ":" << setw(18) << 
+    p_dMaxGeschwindigkeit << setw(18) << p_dGesamtStrecke << setw(16) << endl;
 };
    
 void Fahrzeug::vAbfertigung(){
