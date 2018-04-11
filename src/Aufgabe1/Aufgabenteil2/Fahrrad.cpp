@@ -1,9 +1,14 @@
 #include "Fahrzeug.h"
 #include "Fahrrad.h"
+#include "math.h"
 using namespace std;
 
 Fahrrad::Fahrrad(string sName,double dMaxGeschwindigkeit)
                 :Fahrzeug(sName,dMaxGeschwindigkeit){
+    Fahrzeug::vSetdGeschwindigkeit(dMaxGeschwindigkeit);
+}
+
+Fahrrad::Fahrrad(Fahrrad &revFahrrad):Fahrzeug(revFahrrad){
 }
 
 Fahrrad::~Fahrrad(){
@@ -18,8 +23,10 @@ double Fahrrad::dTanken(double dAuftanken){
 };
 
 double Fahrrad::dGeschwindigkeit() {
-    double Geschwindigkeit = p_dMaxGeschwindigkeit *(1 - (double)((int) (p_dGesamtStrecke/20)/10));
-    if(Geschwindigkeit<12.0){Geschwindigkeit=12;};
+    double Geschwindigkeit = this->dGetvMaxGeschwindigkeit() * (1- this->dGetvGesamtStrecke() / 200);
+    if(Geschwindigkeit<12.0){Geschwindigkeit = 12.0;};
+    this->vSetdGeschwindigkeit(Geschwindigkeit);
+    this->vSetdMaxGeschwindigkeit(Geschwindigkeit);
     return Geschwindigkeit;
 }
 
@@ -30,3 +37,16 @@ void Fahrrad::vAbfertigung() {
         p_dZeit = dGlobaleZeit;
     }
 } 
+
+bool Fahrrad::operator <(const Fahrrad &revFahrrad){
+    if(this->dGetvGesamtStrecke() < revFahrrad.dGetvGesamtStrecke())return 1;
+    return 0;
+}
+
+void Fahrrad::operator = (Fahrrad &revFahrrad) {}
+
+ostream& Fahrrad::ostreamAusgabe(ostream &output) const{
+    Fahrzeug::ostreamAusgabe(output) << endl;
+    return output;
+};
+

@@ -8,9 +8,8 @@ extern double dGlobaleZeit;
 class Fahrzeug{
     protected: 
     double p_dGesamtStrecke;
-    // p_dGesamtZeit: Die Zeit die das Fahrzeug schon gefahren ist
     double p_dGesamtZeit;
-    // p_dZeit: Die Zeit zu dem das Fahrzeug zu letzten mal abgefertigt wurde
+    double p_dGeschwindigkeit;
     double p_dZeit;
     std::string p_sName;
     double p_dMaxGeschwindigkeit;
@@ -23,14 +22,19 @@ class Fahrzeug{
     Fahrzeug();
     Fahrzeug(std::string);
     Fahrzeug(std::string, double);
+    Fahrzeug(Fahrzeug &);
     virtual ~Fahrzeug();
     void vSetsName(std::string);
     double dGetvGesamtStrecke() const;
     double dGetvGesamtZeit() const;
     double dGetvZeit() const;
+    double dGetvGeschwindigkeit() const;
+    void vSetdGeschwindigkeit(double);
     void vSetdMaxGeschwindigkeit(double);
     std::string sGetsName() const;
     double dGetvMaxGeschwindigkeit() const;
+    virtual bool operator < (const Fahrzeug &);
+    virtual void operator = (Fahrzeug &);
     virtual std::ostream& ostreamAusgabe(std::ostream&) const;
     virtual void vAusgabe() const;
     virtual void vAbfertigung();
@@ -41,6 +45,8 @@ class Fahrzeug{
     private:
     void vInitialisierung();
 };
+
+std::ostream& operator << (std::ostream &, const Fahrzeug &);
 
 #endif
 

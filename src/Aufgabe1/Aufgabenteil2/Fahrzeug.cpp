@@ -1,7 +1,7 @@
 #include <string>
 #include <iostream>
 #include <iomanip>
-#include "Fahrzeug.h"
+#include "Fahrzeug.h" 
 using namespace std;
 
 Fahrzeug::Fahrzeug(){
@@ -17,8 +17,14 @@ Fahrzeug::Fahrzeug(string sName) : p_sName(sName) {
 
 Fahrzeug::Fahrzeug(string sName, double dMaxGeschwindigkeit) : 
                    p_sName(sName), p_dMaxGeschwindigkeit (dMaxGeschwindigkeit) {
+    p_dGeschwindigkeit = dMaxGeschwindigkeit;
     vInitialisierung();
 };
+
+Fahrzeug::Fahrzeug(Fahrzeug &revFahrzeug){
+    this->p_sName = revFahrzeug.p_sName;
+    this->p_dMaxGeschwindigkeit = revFahrzeug.p_dMaxGeschwindigkeit;
+}
 
 Fahrzeug::~Fahrzeug(){
 };
@@ -39,9 +45,19 @@ double Fahrzeug::dGetvZeit() const{
     return p_dZeit;
 };
 
+double Fahrzeug::dGetvGeschwindigkeit() const{
+    return p_dGeschwindigkeit;
+}
+
+void Fahrzeug::vSetdGeschwindigkeit(double dGeschwindigkeit){
+    p_dGeschwindigkeit = dGeschwindigkeit;
+}
+
 void Fahrzeug::vSetdMaxGeschwindigkeit(double dGeschwindigkeit){
     p_dMaxGeschwindigkeit =  dGeschwindigkeit;
+    p_dGeschwindigkeit = dGeschwindigkeit;
 }
+
 string Fahrzeug::sGetsName() const{
     return p_sName;
 };
@@ -50,15 +66,28 @@ double Fahrzeug::dGetvMaxGeschwindigkeit() const{
     return p_dMaxGeschwindigkeit;
 }
 
+bool Fahrzeug::operator < (const Fahrzeug &revFahrzeug){
+    if(this->dGetvGesamtStrecke() < revFahrzeug.dGetvGesamtStrecke())return 1;
+    return 0;
+}
+
+void Fahrzeug::operator = (Fahrzeug &revFahrzeug){
+    revFahrzeug.p_sName = this -> p_sName;
+    revFahrzeug.p_dMaxGeschwindigkeit = this -> p_dMaxGeschwindigkeit;
+}
+
 ostream& Fahrzeug::ostreamAusgabe(ostream &output) const{
-    output << setw(12) << p_iID <<setw(12) << p_sName << setw(12) << ":" << setw(18) << 
-    p_dMaxGeschwindigkeit << setw(18) << p_dGesamtStrecke << setw(16);
+    setiosflags(ios::fixed);
+    output << setw(20) << p_iID << setw(20) << p_sName << setw(20) << ":" << setw(20) << 
+    p_dMaxGeschwindigkeit << setw(20) << p_dGeschwindigkeit << setw(20) << p_dGesamtStrecke;
     return output;
 };
  
 void Fahrzeug::vAusgabe() const{
-    cout << setw(12) << p_iID <<setw(12) << p_sName << setw(12) << ":" << setw(18) << 
-    p_dMaxGeschwindigkeit << setw(18) << p_dGesamtStrecke << setw(16) << endl;
+    setiosflags(ios::fixed);
+    cout.precision(3);
+    cout << setw(20) << p_iID <<setw(20) << p_sName << setw(20) << ":" << setw(20) << 
+    p_dMaxGeschwindigkeit << setw(20) << p_dGeschwindigkeit << setw(20) << p_dGesamtStrecke;
 };
    
 void Fahrzeug::vAbfertigung(){
@@ -69,7 +98,9 @@ void Fahrzeug::vAbfertigung(){
     }
 };
 
-double Fahrzeug::dGeschwindigkeit(){return 0.0;};
+double Fahrzeug::dGeschwindigkeit(){
+    return p_dMaxGeschwindigkeit;
+};
 
 double Fahrzeug::dTanken(){return 0.0;};
 
@@ -83,6 +114,10 @@ void Fahrzeug::vInitialisierung(){
     p_dZeit = 0.0;
 };
 
+ostream& operator << (ostream &output,const Fahrzeug &cFahrzeug){ 
+    cFahrzeug.ostreamAusgabe(output);
+    return output;
+}
 
 
 

@@ -10,6 +10,7 @@ PKW::PKW(string sName, double dMaxGeschwindigkeit, double dVerbrauch, double dTa
     :Fahrzeug(sName,dMaxGeschwindigkeit), p_dVerbrauch(dVerbrauch), p_dTankvolumen(dTankvolumen){
     p_dTankinhalt=p_dTankvolumen/2.0;
     p_dGesamtVerbrauch = 0.0;
+    Fahrzeug::vSetdGeschwindigkeit(dMaxGeschwindigkeit);
 };
 
 PKW::PKW(string sName, double dMaxGeschwindigkeit, double dVerbrauch)
@@ -19,14 +20,53 @@ PKW::PKW(string sName, double dMaxGeschwindigkeit, double dVerbrauch)
     p_dGesamtVerbrauch = 0.0;
 };
 
+PKW::PKW(PKW &revPKW):Fahrzeug(revPKW){
+    this -> p_dVerbrauch = revPKW.p_dVerbrauch;
+    this -> p_dTankvolumen = revPKW.p_dTankvolumen;
+}
+
 PKW::~PKW(){};
 
-ostream& PKW::vAusgabe(ostream &output) const{
-    Fahrzeug::vAusgabe(output) << p_dTankinhalt
-    << setw(16) << p_dGesamtVerbrauch <<endl;
+double PKW::dGetVerbrauch(){
+    return p_dVerbrauch;
+}
+
+double PKW::dGetTankinhalt(){
+    return p_dTankinhalt;
+}
+
+double PKW::dGetTankvolumen(){
+    return p_dTankvolumen;
+}
+
+double PKW::dGetGesamtVerbrauch(){
+    return p_dGesamtVerbrauch;
+}
+
+void PKW::vAusgabe() const{
+    Fahrzeug::vAusgabe();
+    cout << setw(16) << p_dTankinhalt << setw(16) << p_dGesamtVerbrauch << endl;
+}
+
+ostream& PKW::ostreamAusgabe(ostream &output) const{
+    Fahrzeug::ostreamAusgabe(output) << setw(12) << p_dTankinhalt
+    << setw(16) << p_dGesamtVerbrauch << endl;
     return output;
 };
-   
+
+
+bool PKW::operator <(const PKW &revPKW){
+    if(this->dGetvGesamtStrecke() < revPKW.dGetvGesamtStrecke())return 1;
+    return 0;
+}
+
+void PKW::operator = (PKW &revPKW){
+    revPKW.p_dVerbrauch = this -> p_dVerbrauch;
+    revPKW.p_dTankvolumen = this -> p_dTankvolumen;
+}
+
+
+
 void PKW::vAbfertigung() {
     if(p_dZeit < dGlobaleZeit){ 
         p_dGesamtStrecke += (dGlobaleZeit - p_dZeit) * PKW::dGeschwindigkeit();

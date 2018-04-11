@@ -15,6 +15,7 @@ class PKW: public Fahrzeug{
     PKW(std::string,double,double,double,double);
     PKW(std::string,double,double,double);
     PKW(std::string,double,double);
+    PKW(PKW &);
     virtual ~PKW();
     double dGetVerbrauch();
     double dGetTankinhalt();
@@ -22,6 +23,8 @@ class PKW: public Fahrzeug{
     double dGetGesamtVerbrauch();
     virtual void vAusgabe() const;
     virtual std::ostream& ostreamAusgabe(std::ostream&) const;
+    virtual bool operator < (const PKW &);
+    virtual void operator = (PKW &);
     virtual void vAbfertigung(); 
     virtual double dTanken();
     virtual double dTanken(double);
