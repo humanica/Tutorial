@@ -2,7 +2,6 @@
 #include <iostream>
 #include <iomanip>
 #include "Fahrzeug.h" 
-#include "AktivesVO.h"
 using namespace std;
 
 Fahrzeug::Fahrzeug(){
@@ -11,15 +10,13 @@ Fahrzeug::Fahrzeug(){
     p_dMaxGeschwindigkeit = 0;
 };
 
-Fahrzeug::Fahrzeug(string sName) : AktivesVO() {
+Fahrzeug::Fahrzeug(string sName) : p_sName(sName) {
     vInitialisierung();
-    p_sName = sName;
     p_dMaxGeschwindigkeit = 0;
 };
 
 Fahrzeug::Fahrzeug(string sName, double dMaxGeschwindigkeit) : 
-          AktivesVO(), p_dMaxGeschwindigkeit (dMaxGeschwindigkeit) {
-    p_sName = sName;
+                   p_sName(sName), p_dMaxGeschwindigkeit (dMaxGeschwindigkeit) {
     p_dGeschwindigkeit = dMaxGeschwindigkeit;
     vInitialisierung();
 };
@@ -30,7 +27,6 @@ Fahrzeug::Fahrzeug(Fahrzeug &revFahrzeug){
 }
 
 Fahrzeug::~Fahrzeug(){
-    cout << "AktivesVO mit id" << p_iID << "gelöscht" << endl;
 };
 
 void Fahrzeug::vSetsName(string sName){
@@ -82,6 +78,7 @@ void Fahrzeug::operator = (Fahrzeug &revFahrzeug){
 
 ostream& Fahrzeug::ostreamAusgabe(ostream &output) const{
     setiosflags(ios::fixed);
+    output << setw(20) << p_iID << setw(20) << p_sName << setw(20) << ":" << setw(20) << 
     p_dMaxGeschwindigkeit << setw(20) << p_dGeschwindigkeit << setw(20) << p_dGesamtStrecke;
     return output;
 };
@@ -110,6 +107,8 @@ double Fahrzeug::dTanken(){return 0.0;};
 double Fahrzeug::dTanken(double dAuftanken){return 0.0;};
 
 void Fahrzeug::vInitialisierung(){
+    p_iMaxID++;
+    p_iID = p_iMaxID;
     p_dGesamtStrecke = 0.0;
     p_dGesamtZeit = 0.0;
     p_dZeit = 0.0;

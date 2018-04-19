@@ -21,7 +21,7 @@ void makeheader();
 
 int main(int argc, char *argv[]) {
  // vAufgabe_1();
- // vAufgabe_2();
+  vAufgabe_2();
  // vAufgabe_3();
 }
 
@@ -61,7 +61,7 @@ void vAufgabe_2(){
    PKW *BMW = new PKW ("BMW", 120, 12, 65);
    PKW *Mercedes = new PKW ("Mercedes", 20, 10, 50);
    PKW *Audi = new PKW("Audi", 100, 8, 60);
-   while(dGlobaleZeit <= 1.0){
+   /*while(dGlobaleZeit <= 1.0){
       *Mercedes = *BMW;
       makeheader();
       cout << *BMW << *Audi << *VW << *Mercedes << endl;
@@ -81,7 +81,7 @@ void vAufgabe_2(){
       cout << *BMW << endl;
       cout << " Ist BMW < Mercedes?" << endl;
       cout << (*BMW < *Mercedes) << endl;
-   } 
+   }*/ 
    if(*BMW < *Mercedes) cout<<"BMW<Mercedes";
    else cout << "Mercedes>BMW";
    *BMW = *Mercedes;

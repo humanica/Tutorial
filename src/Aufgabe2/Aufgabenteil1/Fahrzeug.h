@@ -1,17 +1,19 @@
 #ifndef FAHRZEUG_H_
 #define FAHRZEUG_H_
-#include "AktivesVO.h"
 #include <string>
 #include <iostream>
 extern double dGlobaleZeit;
 
 
-class Fahrzeug : public AktivesVO {
+class Fahrzeug{
     protected: 
     double p_dGesamtStrecke;
     double p_dGesamtZeit;
     double p_dGeschwindigkeit;
+    double p_dZeit;
+    std::string p_sName;
     double p_dMaxGeschwindigkeit;
+    int p_iID;
     
     private:
     static int p_iMaxID;
