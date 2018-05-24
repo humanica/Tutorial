@@ -10,13 +10,7 @@ class Fahrzeug{
     double p_dGesamtStrecke;
     double p_dGesamtZeit;
     double p_dGeschwindigkeit;
-    double p_dZeit;
-    std::string p_sName;
     double p_dMaxGeschwindigkeit;
-    int p_iID;
-    
-    private:
-    static int p_iMaxID;
 
     public:
     Fahrzeug();
@@ -46,7 +40,6 @@ class Fahrzeug{
     void vInitialisierung();
 };
 
-std::ostream& operator << (std::ostream &, const Fahrzeug &);
-
+// std::ostream& operator << (std::ostream &, const Fahrzeug &);
 #endif
 

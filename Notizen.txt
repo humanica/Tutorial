@@ -44,6 +44,25 @@ Stimmt das? Wie kann ich dann auf zb einem Array von Structs zugreifen? Kann das
 
 
 
+- Anstrakte Klasse:
+Gibt es mehrere Klassen nebeneinander die Funktionen oder Variablen teilen macht es Sinn eine gemeinsame Oberklasse zu 
+definieren um Codeduplizierung zu vermeiden. Nun kann es unerwünscht sein das von diese Klasse instanzen erstellt werden, in 
+diesem Fall erstellt man eine abstrakte Klasse. In diese Klasse werden alle gemeinsamen Variablen und Funktionen ausgelagert.
+             --> Welche Funktionen davon werden als rein virtuell deklariert? Alle Funktionen die in allen Basisklassen implementiert
+		 sind werden als rein virtuell deklariert. In den derived Klassen wird bei diesen Funktionen ein override dahinter gestellt.
+		 Das erhöht zum einen die Lesbarkeit, stellt aber auch sicher das 
+             --> Mit welchen Berechtigungen sollten die Funktionen/Variablen deklariert werden und wie sollte die Klasse vererbt werden?
+		 Die Klasse kann als public vererbt werden, in diesem Fall kann innerhalb der vituellen Klasse direkte Rechte vergeben werden.
+		 Funktionen sollten public und Variablen private deklariert werden, dementsprechend müsen set/get Funktionen gegeben werden.r		
+
+Anmerkungen:
+Da keine instanzen erstellt werden und die Abstrakte Klasse als Interface interpretiert wird darf der Konstruktor nicht 
+verwendet werden. Man kann ihn zusammen mit dem Destructor als protected deklarieren um in Formal erwähnt zu haben und 
+gleichzeitig den Zugriff zu verhindern.
+
+
+
+
 
 
 

@@ -26,8 +26,7 @@ Fahrzeug::Fahrzeug(Fahrzeug &revFahrzeug){
     this->p_dMaxGeschwindigkeit = revFahrzeug.p_dMaxGeschwindigkeit;
 }
 
-Fahrzeug::~Fahrzeug(){
-};
+Fahrzeug::~Fahrzeug(){};
 
 void Fahrzeug::vSetsName(string sName){
     p_sName = sName;
@@ -77,8 +76,9 @@ void Fahrzeug::operator = (Fahrzeug &revFahrzeug){
 }
 
 ostream& Fahrzeug::ostreamAusgabe(ostream &output) const{
+    AktivesVO::ostreamAusgabe(output);
     setiosflags(ios::fixed);
-    output << setw(20) << p_iID << setw(20) << p_sName << setw(20) << ":" << setw(20) << 
+    AktivesVO::ostreamAusgabe(output) << setw(20) << ":" << setw(20) << 
     p_dMaxGeschwindigkeit << setw(20) << p_dGeschwindigkeit << setw(20) << p_dGesamtStrecke;
     return output;
 };
@@ -114,10 +114,10 @@ void Fahrzeug::vInitialisierung(){
     p_dZeit = 0.0;
 };
 
-ostream& operator << (ostream &output,const Fahrzeug &cFahrzeug){ 
+/*ostream& operator << (ostream &output,const Fahrzeug &cFahrzeug){ 
     cFahrzeug.ostreamAusgabe(output);
     return output;
-}
+}*/
 
 
 

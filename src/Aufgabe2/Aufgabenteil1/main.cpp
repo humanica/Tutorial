@@ -5,10 +5,11 @@
 #include "Fahrzeug.h"
 #include "PKW.h"
 #include "Fahrrad.h"
+#include "AktivesVO.h"
 using namespace std;
 
 
-int Fahrzeug::p_iMaxID = 0;
+int AktivesVO::p_iMaxID = 0;
 double dGlobaleZeit=0.0;
 
 
@@ -21,7 +22,7 @@ void makeheader();
 
 int main(int argc, char *argv[]) {
  // vAufgabe_1();
-  vAufgabe_2();
+ // vAufgabe_2();
  // vAufgabe_3();
 }
 
